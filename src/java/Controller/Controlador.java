@@ -57,7 +57,7 @@ public class Controlador {
         }else if(s.getPlan() == "Estadar"){
             aux = 2;
         }else{
-            aux = 3;
+            aux = 3; /*Caso premium*/
         }
         this.jdbcTemplate.update(sql, s.getNombre(), s.getApellidoPaterno(), s.getApellidoMaterno(), s.getServicio(), s.getFechaNacimiento(), s.getPlan(), s.getEstatus(), aux);
         return new ModelAndView("redirect:/acceso.htm");
