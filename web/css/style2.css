@@ -1,0 +1,50 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22/02/2022, 04:24:47 PM
+    Author     : Dramirez
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #15161D;
+}
+/*******Contenedor 1*/
+.perfil{
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+}
+.perfil h2{
+    color: #E50914;
+    font-weight: 600;
+}
+
+.perfil img{
+    max-height: 200px;
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+.jumbotron{
+    background-color: #15161D;
+}
+.users{
+    display: inline-grid;
+}
+.contenedor1 .users a{
+    color: #337AB7;
+    font-weight: 500;
+    -webkit-transition: 0.2s color;
+    transition: 0.2s color;
+    font-size: 20px;
+}
+
+
