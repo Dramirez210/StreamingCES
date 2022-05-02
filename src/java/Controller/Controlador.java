@@ -31,6 +31,50 @@ public class Controlador {
         return mav;
     }
     
+    @RequestMapping(value="agregar.htm", method = RequestMethod.GET)
+    public ModelAndView Agregar(){
+        mav.addObject(new Suscriptor());
+        mav.setViewName("agregar");
+        return mav;
+    }
+
+    @RequestMapping(value="agregar.htm", method = RequestMethod.POST)
+    public ModelAndView Agregar(Suscriptor s){
+        String sql = "INSERT INTO tsuscriptores(nombre, apellidoPaterno, apellidoMaterno,servicio,fechaNacimiento,plan,estatus,idPlanes) values(?,?,?,?,?,?,?,?)";
+        int aux;
+        if(s.getPlan() == "Basico"){
+            aux = 1;
+        }else if(s.getPlan() == "Estadar"){
+            aux = 2;
+        }else{
+            aux = 3;
+        }
+        this.jdbcTemplate.update(sql, s.getNombre(), s.getApellidoPaterno(), s.getApellidoMaterno(), s.getServicio(), s.getFechaNacimiento(), s.getPlan(), s.getEstatus(), aux);
+        return new ModelAndView("redirect:/acceso.htm");
+    }
     
+    @RequestMapping(value = "editar.htm", method = RequestMethod.GET)
+    public ModelAndView Editar (HttpServletRequest request){
+        id = Integer.parseInt(request.getParameter("id"));
+        String sql = "SELECT nombre, apellidoPaterno, apellidoMaterno, servicio, fechaNacimiento, plan, estatus FROM tsuscriptores WHERE id="+id;
+        datos = this.jdbcTemplate.queryForList(sql);
+        mav.addObject("lista", datos);
+        mav.setViewName("editar");
+        return mav;
+    }
     
+    @RequestMapping(value = "editar.htm", method = RequestMethod.POST)
+    public ModelAndView Editar(Suscriptor s){
+        String sql = "UPDATE tsuscriptores set nombre=?, apellidoPaterno=?, apellidoMaterno=?, servicio=?, fechaNacimiento=?, plan=?, estatus=? where id="+id;
+        this.jdbcTemplate.update(sql, s.getNombre(), s.getApellidoPaterno(), s.getApellidoMaterno(), s.getServicio(), s.getFechaNacimiento(), s.getPlan(), s.getEstatus());
+        return new ModelAndView("redirect:/acceso.htm");
+    }
+    
+    @RequestMapping("borrar.htm")
+    public ModelAndView Borrar(HttpServletRequest request){
+        id = Integer.parseInt(request.getParameter("id"));
+        String sql = "DELETE from tsuscriptores WHERE id = "+id;
+        this.jdbcTemplate.update(sql);
+        return new ModelAndView("redirect:/acceso.htm");
+    }
 }
