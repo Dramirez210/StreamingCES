@@ -9,6 +9,8 @@ import Config.Conexion;
 import Entidad.Suscriptor;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,15 +25,27 @@ public class Controlador {
     List datos;
     int id;
     
+    static final Logger logger = Logger.getLogger(Controlador.class.getName());
+    
     //Pagina principal
     @RequestMapping("index.htm")
     public ModelAndView mostrarIndex(){
+        BasicConfigurator.configure();
+        logger.debug("Hello");
+        logger.info("Hello this is an info message");
+        logger.error(mav);
+        logger.fatal(mav);
+        logger.warn(mav);
         return mav;
     }
     
     //Consultar registros
     @RequestMapping("acceso.htm")
     public ModelAndView Listar(){
+        logger.info("Hello this is an info message");
+        logger.error(mav);
+        logger.fatal(mav);
+        logger.warn(mav);
         String sql = "SELECT * FROM tsuscriptores";
         datos=this.jdbcTemplate.queryForList(sql);
         mav.addObject("lista",datos);
