@@ -1,4 +1,8 @@
-
+/**
+    Document   : Controlador
+    Created on : 02/05/2022, 01:15:00 PM
+    Author     : Dramirez
+ */
 package Controller;
 
 import Config.Conexion;
@@ -12,16 +16,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class Controlador {
     Conexion con = new Conexion();
+    //Plantilla de datos para tratamiento
     JdbcTemplate jdbcTemplate = new JdbcTemplate(con.conectar());
+    //Modelo y vista
     ModelAndView mav = new ModelAndView();
     List datos;
     int id;
-
+    
+    //Pagina principal
     @RequestMapping("index.htm")
     public ModelAndView mostrarIndex(){
         return mav;
     }
     
+    //Consultar registros
     @RequestMapping("acceso.htm")
     public ModelAndView Listar(){
         String sql = "SELECT * FROM tsuscriptores";
@@ -31,13 +39,15 @@ public class Controlador {
         return mav;
     }
     
+    //Para agregar mapeo
     @RequestMapping(value="agregar.htm", method = RequestMethod.GET)
     public ModelAndView Agregar(){
         mav.addObject(new Suscriptor());
         mav.setViewName("agregar");
         return mav;
     }
-
+    
+    //Agregar registro
     @RequestMapping(value="agregar.htm", method = RequestMethod.POST)
     public ModelAndView Agregar(Suscriptor s){
         String sql = "INSERT INTO tsuscriptores(nombre, apellidoPaterno, apellidoMaterno,servicio,fechaNacimiento,plan,estatus,idPlanes) values(?,?,?,?,?,?,?,?)";
@@ -63,6 +73,7 @@ public class Controlador {
         return mav;
     }
     
+    //editar registro
     @RequestMapping(value = "editar.htm", method = RequestMethod.POST)
     public ModelAndView Editar(Suscriptor s){
         String sql = "UPDATE tsuscriptores set nombre=?, apellidoPaterno=?, apellidoMaterno=?, servicio=?, fechaNacimiento=?, plan=?, estatus=? where id="+id;
@@ -70,6 +81,7 @@ public class Controlador {
         return new ModelAndView("redirect:/acceso.htm");
     }
     
+    //Borrar registro
     @RequestMapping("borrar.htm")
     public ModelAndView Borrar(HttpServletRequest request){
         id = Integer.parseInt(request.getParameter("id"));

@@ -1,4 +1,8 @@
-
+/**
+    Document   : Suscriptor
+    Created on : 02/05/2022, 01:45:00 PM
+    Author     : Dramirez
+ */
 package Entidad;
 
 public class Suscriptor {

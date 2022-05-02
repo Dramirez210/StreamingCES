@@ -10,8 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Suscriptores</title>
+        <!-- Bootstrap -->
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+        <!-- Font Awesome Icon -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
+        <!--Iconos de bootstrap 5-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
     </head>
     <body>
