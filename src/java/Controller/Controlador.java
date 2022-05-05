@@ -7,10 +7,12 @@ package Controller;
 
 import Config.Conexion;
 import Entidad.Suscriptor;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,10 +62,13 @@ public class Controlador {
         mav.setViewName("agregar");
         return mav;
     }
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date dateNaissance;
     
     //Agregar registro
     @RequestMapping(value="agregar.htm", method = RequestMethod.POST)
     public ModelAndView Agregar(Suscriptor s){
+        dateNaissance = s.getFechaNacimiento();
         String sql = "INSERT INTO tsuscriptores(nombre, apellidoPaterno, apellidoMaterno,servicio,fechaNacimiento,plan,estatus,idPlanes) values(?,?,?,?,?,?,?,?)";
         int aux;
         if(s.getPlan() == "Basico"){

@@ -5,20 +5,22 @@
  */
 package Entidad;
 
+import java.sql.Date;
+
 public class Suscriptor {
     int id;
     String nombre;
     String apellidoPaterno;
     String apellidoMaterno;
     String servicio;
-    String fechaNacimiento;
+    Date fechaNacimiento;
     String plan;
     String estatus;
 
     public Suscriptor() {
     }
 
-    public Suscriptor(int id, String nombre, String apellidoPaterno, String apellidoMaterno, String servicio, String fechaNacimiento, String plan, String estatus) {
+    public Suscriptor(int id, String nombre, String apellidoPaterno, String apellidoMaterno, String servicio, Date fechaNacimiento, String plan, String estatus) {
         this.id = id;
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -69,11 +71,11 @@ public class Suscriptor {
         this.servicio = servicio;
     }
 
-    public String getFechaNacimiento() {
+    public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(String fechaNacimiento) {
+    public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
