@@ -62,13 +62,10 @@ public class Controlador {
         mav.setViewName("agregar");
         return mav;
     }
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date dateNaissance;
     
     //Agregar registro
     @RequestMapping(value="agregar.htm", method = RequestMethod.POST)
     public ModelAndView Agregar(Suscriptor s){
-        dateNaissance = s.getFechaNacimiento();
         String sql = "INSERT INTO tsuscriptores(nombre, apellidoPaterno, apellidoMaterno,servicio,fechaNacimiento,plan,estatus,idPlanes) values(?,?,?,?,?,?,?,?)";
         int aux;
         if(s.getPlan() == "Basico"){
