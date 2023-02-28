@@ -1,5 +1,9 @@
 # StreamingCES
 
+![Usuarios](img/Captura.PNG)
+
+![CRUD](img/Captura2.PNG)
+
 #### Universidad Autónoma de la Ciudad de México
 
 #### Ingenieria en software
