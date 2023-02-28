@@ -1,6 +1,6 @@
 # StreamingCES
 
-![Usuarios](img/Captura.PNG)
+<center><img src="img/Captura.PNG" /></center>
 
 ![CRUD](img/Captura2.PNG)
 
